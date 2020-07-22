@@ -1,0 +1,37 @@
+import os
+import urllib.request
+import re
+import pandas as pd
+from csv import writer
+
+def append_to_csv(file_name, new_entry):
+    # Open file in append mode
+    with open(file_name, 'a+', newline='') as write_obj:
+        # Create a writer object from csv module
+        csv_writer = writer(write_obj)
+        # Add contents of list as last row in the csv file
+        csv_writer.writerow([new_entry])
+
+subdirectories = [str(i) for i in range(10)]
+for subdirectory in subdirectories:
+    base_URL = 'https://archive.physionet.org/physiobank/database/mimic3wdb/matched/p0'
+    URL = base_URL+subdirectory
+    page = urllib.request.urlopen(URL)
+    text = page.read().decode('utf-8')
+
+    subdirectory_names = sorted(set(re.findall("[p]{1}\d{6}", text)))
+    hard_drive_directory = os.path.join(os.getcwd(), 'header_files')
+
+    i = 0
+    for item in subdirectory_names:
+        URL = os.path.join(base_URL + subdirectory, item)
+        page = urllib.request.urlopen(URL)
+        text = page.read().decode('utf-8')
+        header_files = sorted(set(re.findall("[0-9]*_[0-9]*.hea", text)))
+
+        for header_file in header_files:
+    #        source = os.path.join("physionet.org::mimic3wdb-matched/p0"+subdirectory,item,header_file)
+            header_file_path = os.path.join('p0'+subdirectory,item,header_file)
+            print(header_file_path)
+
+            append_to_csv('header_files.csv', header_file_path)
