@@ -41,16 +41,15 @@ def get_record_file(args, dict_input, id, entry):
 
     # Sample
     # get choice date time
-    num_id = id.strip('p')
-    num_id = num_id.lstrip('0')
-    patient_dict = dict_rhythm_and_waveform_times[str(num_id)]
+
+    patient_dict = dict_rhythm_and_waveform_times[str(id)]
     if len(patient_dict) == 0:
         return (None, None)
-    choice = dict_rhythm_and_waveform_times[str(num_id)][entry]
+    choice = dict_rhythm_and_waveform_times[str(id)][entry]
     # get associated record
     p_id = str(id).zfill(6)
 
-    path_to_data = os.path.join(args.path, p_id)
+    path_to_data = os.path.join(args.path, p_id[:3],p_id)
     records = [f for f in os.listdir(path_to_data) if os.path.isfile(os.path.join(path_to_data, f))]
     regex_for_record = re.compile('p.*[0-9].hea')
     reversed_record_files = sorted(list(filter(regex_for_record.match, records)), reverse = True)
@@ -58,7 +57,7 @@ def get_record_file(args, dict_input, id, entry):
 
     for i in range(len(reversed_record_files)):
         if choice >= reversed_record_files_datetime[i]:
-            script_input = p_id + '/' + reversed_record_files[i][:-4]
+            script_input = os.path.join(p_id[:3],p_id,reversed_record_files[i][:-4])
             return script_input, choice
 
     return (None, None)
@@ -119,3 +118,20 @@ def layout_info (path):
     header.columns = header_columns
 
     return header
+
+def filter_patients(patient_ids, args):
+    patient_info = pd.read_csv('PATIENT_INFO.csv')
+    patient_ids = [f[1:].lstrip('0') for f in patient_ids]
+
+    patient_info = patient_info[patient_info['SUBJECT_ID'].isin(patient_ids)]
+
+    patient_info = patient_info[(patient_info.AGE >= args.min_age) &
+                                       (patient_info.AGE <= args.max_age)]
+    if args.sex != 'All':
+        patient_info = patient_info[patient_info.SEX == args.sex]
+
+    patient_ids = list(set(patient_info['SUBJECT_ID']))
+    patient_ids = ['p' + str(f).zfill(6) for f in patient_ids]
+
+    return patient_ids
+
