@@ -41,13 +41,13 @@ Open each navigation button press, the csv file - *'LABELS.csv'** is updated. Th
 
 The submit button stops the interface and prints summary statistics of the labelling session to the terminal. 
 
-The *'LABELS.csv'** os made up of 3 columns, as seen below.
+The *'LABELS.csv'** is made up of 3 columns, as seen below.
 
 The filename is of the format patient_id-recordfile-seconds_into_record, where recordfile is the record segment file from which the data was sourced and seconds_into_record is the number of seconds into this record from which we extracted data.
 
 
 
-| Filename | Rhythm Classification (numeric)       |. Noise Classification
+| Filename | Rhythm Classification (numeric)       | Noise Classification
 |----------|---------------------------------------|-----------------------
 | filename1|        1            | 5
 | filename2|        2            | 3
