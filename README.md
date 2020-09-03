@@ -11,10 +11,13 @@ The stages can be run in succession or independetly of each other.
 Below we present a summary of the objectives for these stages. 
 
 ## Waveform Extraction
-To generate the waveforms, we use the [MIMIC-III Waveform Database](https://physionet.org/content/mimic3wdb/1.0/) - this is a very large database of raw data from the bedside monitors. Our implementation allows for selective selection of the waveforms from this database, using the nurse charts to provide tenetative labels as well as filtering according to demographics and ward. 
+To generate the waveforms, we use the [MIMIC-III Waveform Database](https://physionet.org/content/mimic3wdb/1.0/) - this is a very large database of raw data from the bedside monitors, with no labels. Our implementation allows for selective extraction of the waveforms from this database, using the nurse charts to provide tenetative labels as well as filtering according to demographics and ward. 
 
 ## Waveform Labelling
-The waveforms extracted above were generated with tentative nurse labels from the same period, however to build a more reliable datbase, it it necessary to inspect the waveforms individually to ascertain the dominant rhythm. Our GUI allows for rapid labelling for this purpose. 
+The waveforms extracted above were generated with tentative nurse labels from the same period, however to build a more reliable datbase, it it necessary to inspect the waveforms individually to ascertain the dominant rhythm. Our GUI allows for rapid labelling to create a training set which can then be used to build a database-specific classifier
+
+## Classification
+We present three different algorithms for classification of arrhythmia, these can be used for other ECG databases but are designed such that the outputs of the previous stage are fed directly in. Modifications may be required if using other data. 
 
 ## Environment set up
  ```
