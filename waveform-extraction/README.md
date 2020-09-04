@@ -2,37 +2,8 @@
 
 We present a framework for selective extraction of waveforms according to nurse-labelled rhythm, electrocardiogram lead and demographic properties
 
-## Environment set up
- ```
-git clone git@github.com:hamidk997/mimic-iii-waveform-extraction.git
-```
 
-If you don't have `virtualenv`, install it with
-
-```
-pip install virtualenv
-```
-
-Make and activate a new Python 3.7 environment
-
-```
-virtualenv -p python3.7 mimic_env
-source mimic_env/bin/activate
-```
-Install requirements
-```
-pip install -r requirements.txt
-```
-### System dependencies
-System dependencies are [wfdb] (https://archive.physionet.org/physiotools/wfdb.shtml) which can be installed by following the instructions on hyperlink.
-
-ImageMagick and Ghostscript are also required to produced the ECG plots. These can be installed using [homebrew](https://brew.sh) a package manager. Once homebrew is set up, the following instructions are to be run on the command line to install these dependencies. 
-
-```
-brew install imagemagick
-brew install ghostscript
-```
-### Data
+## Data
 
 The MIMIC-III clinical data requires for permission to be granted before it can be used. This [link](https://mimic.physionet.org) leads to their webpage where researchers can request access and complete the recognized course in protecting human research participants that includes Health Insurance Portability and Accountability Act (HIPAA) requirements. The researcher must then sign a data use agreement which outlines appropriate data usage and security standards, and forbids efforts to identify individual patients. (https://physionet.org/content/mimiciii/1.4/)
 
