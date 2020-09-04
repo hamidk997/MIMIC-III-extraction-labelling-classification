@@ -39,6 +39,8 @@ The download_header_files.py takes a single command line argument: -- save_direc
 
 It outputs a nested set of directrories, with subdirectories for patient specific data. 
 
+### Generate Patient Data table
+To allow us to filter by patient demographics, we create this Patient Data table. Running the **create_patient_info.py** file in the misc folder generates a csv file with demographics for each hopsital admission. We chose to generate the demographics data for each hosptial rather than patient becauase there are instances where the same patient is admitted back to the ICU after many years. 
 
 ## Waveform extraction
 
