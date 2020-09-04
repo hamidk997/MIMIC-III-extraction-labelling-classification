@@ -45,6 +45,8 @@ To allow us to filter by patient demographics, we create this Patient Data table
 ## Waveform extraction
 
 We provide the interface shown below to extract waveforms.
+![Alt text](https://github.com/hamidk997/MIMIC-III-waveform-extraction/blob/master/Waveform%20Extraction%20GUI.png?raw=true "Optional Title")
+
 
 The sliders allow for the user to set the minimum and maximum age of patients from whom data are extracted. 
 The dropdown menus allow for filters based on the sex of the patient and ward at admission.
