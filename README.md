@@ -36,7 +36,7 @@ Make and activate a new Python 3.7 environment
 virtualenv -p python3.7 mimic_env
 source mimic_env/bin/activate
 ```
-Install requirements
+Install requirements - different requirements for each of the subfolders, so run the command below inside each of the subdirectories you wish to use
 ```
 pip install -r requirements.txt
 ```
