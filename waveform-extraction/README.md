@@ -49,8 +49,13 @@ To allow us to filter by patient demographics, we create this Patient Data table
 ## Waveform extraction
 
 We provide the interface shown below to extract waveforms.
-![Alt text](https://github.com/hamidk997/MIMIC-III-waveform-extraction/blob/master/Waveform%20Extraction%20GUI.png?raw=true "Optional Title")
 
+It is to be executed through:
+```python
+interface.py
+```
+
+![Alt text](https://github.com/hamidk997/MIMIC-III-waveform-extraction/blob/master/Waveform%20Extraction%20GUI.png?raw=true "Optional Title")
 
 The sliders allow for the user to set the minimum and maximum age of patients from whom data are extracted. 
 The dropdown menus allow for filters based on the sex of the patient and ward at admission.
@@ -59,7 +64,8 @@ Paths to the directories which store the data we generated in the preliminary se
 
 Once these are set, the 'Set parameter values' commits these to a JSON file which can be accessed by main **build_database.py** script. 
 
-This script can be executed by the GUI using the associated button.
+
+This **build_database.py** script can be executed by the GUI using the associated button or by just running the file itseld. 
 
 Running this file generates two directories. A csv files folder which stores the raw data and a jpeg folder which stores the images. 
 Corresponding files in these directories have the same filename but with different extension.
