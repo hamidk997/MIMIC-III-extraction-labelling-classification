@@ -22,7 +22,7 @@ The nurse recordings, necessary to perform the subsequent temporal matches comes
 SELECT * FROM `physionet-data.mimiciii_clinical.chartevents`
 WHERE ITEMID = 212 OR ITEMID = 220048
 ```
-To improve the speed of processing in subsequent steps, we split this file into patient specific csv| files, the split_by_patient.py python file provided in the repository runs the necessary code to build a directory comprised of per-patient csv files. 
+To improve the speed of processing in subsequent steps, we split this file into patient specific csv files, the split_by_patient.py python file provided in the repository runs the necessary code to build a directory comprised of per-patient csv files. 
 
 The split_by_patient.py file takes two command line arguments:
 
@@ -44,7 +44,7 @@ The download_header_files.py takes a single command line argument: -- save_direc
 It outputs a nested set of directrories, with subdirectories for patient specific data. 
 
 ### Generate Patient Data table
-To allow us to filter by patient demographics, we create this Patient Data table. Running the **create_patient_info.py** file in the misc folder generates a csv file with demographics for each hopsital admission. We chose to generate the demographics data for each hosptial rather than patient becauase there are instances where the same patient is admitted back to the ICU after many years. 
+To allow us to filter by patient demographics, we create this Patient Data table. Running the **create_patient_info.py** file in the misc folder generates a csv file with demographics for each hopsital admission. We chose to generate the demographics data for each hosptial admission rather than patient becauase there are instances where the same patient is admitted back to the ICU after many years. 
 
 ## Waveform extraction
 
