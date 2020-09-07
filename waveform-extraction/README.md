@@ -19,7 +19,7 @@ To extract the waveform, we must first perform some preliminary steps to make th
 The nurse recordings, necessary to perform the subsequent temporal matches comes in the form of a single, large csv file, over 30GB in size. To bypass download and further processing of this large file, we  query the cloud-based instance of the MIMIC-III database loaded onto Google BigQuery. Instructions on establishing access to this instance are provided on the following [link](https://mimic.physionet.org/tutorials/intro-to-mimic-iii-bq/). We only require the rows associated with the heart rhythm and therefore filter for the ITEMID codes associated with this.  The database was compiled over a long period, and the clinical information system used was replaced, therefore, in filtering for heart rhythms, we use both ITEMID codes 212 and 220048 (for CareVue and MetaVision respectively). This is implemented by the SQL query below which produces a significantly smaller file that contains just the information required.
 
 ``` sql
-SELECT * FROM `physionet-data.mimiciii_clinical.chartevents`<br />
+SELECT * FROM `physionet-data.mimiciii_clinical.chartevents`
 WHERE ITEMID = 212 OR ITEMID = 220048
 ```
 To improve the speed of processing in subsequent steps, we split this file into patient specific csv| files, the split_by_patient.py python file provided in the repository runs the necessary code to build a directory comprised of per-patient csv files. 
