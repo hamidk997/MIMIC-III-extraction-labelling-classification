@@ -8,10 +8,10 @@ These are:
 
 The stages can be run in succession or independetly of each other.
 
-Below we present a summary of the objectives for these stages. 
+Below we present a summary of the work for these stages. 
 
 ## Waveform Extraction
-To generate the waveforms, we use the [MIMIC-III Waveform Database](https://physionet.org/content/mimic3wdb/1.0/) - this is a very large database of raw data from the bedside monitors, with no labels. Our implementation allows for selective extraction of the waveforms from this database, using the nurse charts to provide tenetative labels as well as filtering according to demographics and ward. 
+To generate the waveforms, we use the [MIMIC-III Waveform Database](https://physionet.org/content/mimic3wdb/1.0/) - this is a very large database of raw data from the bedside monitors. These were collected under normal ICU monitoring, so provide a good source of real-world data. The database itself contains millions of recorded segments, ranging from seconds to tens of hours in length and with varying numbers of ECG leads connected, it is described in further detail in our [paper](link-to-data-paper).  Our implementation allows for selective extraction of the waveforms from this database, using the nurse charts to provide tenetative labels as well as filtering according to demographics parameters. 
 
 ## Waveform Labelling
 The waveforms extracted above were generated with tentative nurse labels from the same period, however to build a more reliable datbase, it it necessary to inspect the waveforms individually to ascertain the dominant rhythm. Our GUI allows for rapid labelling to create a training set which can then be used to build a database-specific classifier
