@@ -17,7 +17,7 @@ To generate the waveforms, we use the [MIMIC-III Waveform Database](https://phys
 The waveforms extracted above were generated with tentative nurse labels from the same period, however to build a more reliable datbase, it it necessary to inspect the waveforms individually to ascertain the dominant rhythm. Our GUI allows for rapid labelling to create a training set which can then be used to build a database-specific classifier
 
 ## Classification
-We present three different algorithms for classification of arrhythmia, these can be used for other ECG databases but are designed such that the outputs of the previous stage are fed directly in. Modifications may be required if using other data. 
+We present a simple algorithm for classification of arrhythmias, this can be used for other ECG databases but is designed such that the outputs of the previous stage are fed directly in. Modifications may be required if using other data formats. 
 
 ## Environment set up
  ```
