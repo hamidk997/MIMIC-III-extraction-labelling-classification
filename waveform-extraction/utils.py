@@ -120,18 +120,21 @@ def layout_info (path):
     return header
 
 def filter_patients(patient_ids, args):
-    patient_info = pd.read_csv('PATIENT_INFO.csv')
+    patient_info = pd.read_csv('misc/PATIENT_DATA.csv', index_col=None)
     patient_ids = [f[1:].lstrip('0') for f in patient_ids]
 
-    patient_info = patient_info[patient_info['SUBJECT_ID'].isin(patient_ids)]
+    patient_info = patient_info[patient_info['ID'].isin(patient_ids)]
 
     patient_info = patient_info[(patient_info.AGE >= args.min_age) &
                                        (patient_info.AGE <= args.max_age)]
     if args.sex != 'All':
         patient_info = patient_info[patient_info.SEX == args.sex]
 
-    patient_ids = list(set(patient_info['SUBJECT_ID']))
-    patient_ids = ['p' + str(f).zfill(6) for f in patient_ids]
+    if args.ward != 'All':
+        patient_info = patient_info[patient_info['WARD'] == args.ward]
 
+
+    patient_ids = list(set(patient_info['ID']))
+    patient_ids = ['p' + str(pid).zfill(6) for pid in patient_ids]
     return patient_ids
 
