@@ -12,7 +12,7 @@ The MIMIC-III clinical data requires for permission to be granted before it can 
 
 ## Preliminary steps
 
-To extract the waveform, we must first perform some preliminary steps to make the data more easier to work with.
+To extract the waveform, we must first perform some preliminary steps to make the data easier to work with.
 
 ### Splitting nurse chart data
 
