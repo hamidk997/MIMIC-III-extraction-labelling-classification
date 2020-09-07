@@ -8,12 +8,14 @@ def check():
     max_age = Maximum_Age.get()
     num_waveforms = int(Num_Waveforms.get())
     rhythm_class = rhythm_selection.get()
+    ward_class = ward_selection.get()
     ECG_lead = lead_selection.get()
     sex = sex_selection.get()
     data = {}
     data['min_age'] = min_age
     data['max_age'] = max_age
     data['sex'] = sex
+    data['ward'] = ward_class
     data['savedir'] = save_dir
     data['path'] = header_files_directory
     data['clinical_path'] = clinical_dir
@@ -89,12 +91,13 @@ lead_dropdown_menu = OptionMenu(window,lead_selection,*lead_options)
 lead_dropdown_menu.config(width = 12)
 lead_dropdown_menu.pack()
 
-ward_options= ['CCU',
+ward_options= ['All',
+               'CCU',
                'MICU',
                'TSICU',
                 'NCU']
 ward_selection = StringVar()
-ward_selection.set('MICU')
+ward_selection.set('All')
 ward_dropdown_menu = OptionMenu(window,ward_selection,*ward_options)
 ward_dropdown_menu.config(width = 12)
 ward_dropdown_menu.pack()
